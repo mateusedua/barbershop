@@ -1,11 +1,13 @@
 import Search from "./_components/search"
 import Image from "next/image"
 import { getrecomendedbarber } from "./_data/get-recomended-barber"
+import { getpopularbarber } from "./_data/get-popular-barber"
 import BarberShopItem from "./_components/barbershop-item"
 import { BarberShopProps } from "./_constants/types"
 
 const Home = async () => {
   const recomendedBarber: Array<BarberShopProps> = await getrecomendedbarber()
+  const particularBarber: Array<BarberShopProps> = await getpopularbarber()
 
   return (
     <div className="p-6">
@@ -32,6 +34,23 @@ const Home = async () => {
             </h2>
             <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
               {recomendedBarber.map((barbershop) => (
+                <BarberShopItem
+                  key={barbershop.id_barber}
+                  barbershop={barbershop}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      <div>
+        {particularBarber.length > 0 && (
+          <>
+            <h2 className="mb-3 mt-6 text-xs uppercase text-gray-400">
+              populares
+            </h2>
+            <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+              {particularBarber.map((barbershop) => (
                 <BarberShopItem
                   key={barbershop.id_barber}
                   barbershop={barbershop}
