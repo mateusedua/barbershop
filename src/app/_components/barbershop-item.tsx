@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import { BarberShopProps } from "../_constants/types"
 import { Button } from "./ui/button"
 import { Card, CardContent } from "./ui/card"
@@ -25,8 +26,8 @@ const BarberShopItem = ({ barbershop }: BarberShopItemProps) => {
           <p className="truncate text-sm text-gray-400">
             {barbershop.complement}, {barbershop.numero}, {barbershop.city}
           </p>
-          <Button variant="secondary" className="mt-3 w-full">
-            Reservar
+          <Button variant="secondary" className="mt-3 w-full" asChild>
+            <Link href={`/barbershop/${barbershop.id_barber}`}>Reservar</Link>
           </Button>
         </div>
       </CardContent>
