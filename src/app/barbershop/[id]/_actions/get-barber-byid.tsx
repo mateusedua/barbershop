@@ -14,7 +14,8 @@ export const getbarberbyid = async (id_barber: string) => {
         s.description service_description,
         s.image_url service_image_url,
         s.price,
-        s.id_service
+        s.id_service,
+        b.phones
         from barbershop b,
         barbershop_service s,
         address ad

@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Separator } from "@/app/_components/ui/separator"
 import { BarberByIDProps } from "@/app/_constants/interfaces"
 import BarberShopService from "@/app/_components/barbershop-service"
+import BarberShopPhone from "@/app/_components/barbershop-phone"
 
 interface BarberShopProps {
   params: {
@@ -50,15 +51,30 @@ const BarberShop = async ({ params }: BarberShopProps) => {
       </div>
       <Separator />
       <div className="p-5">
-        <h2 className="mb-3 text-xs uppercase text-gray-400">sobre nós</h2>
+        <h2 className="mb-3 text-xs font-semibold uppercase text-gray-400">
+          sobre nós
+        </h2>
         <p className="text-justify">{barberbyid[0].barber_description}</p>
       </div>
       <Separator />
       <div className="p-5">
-        <h2 className="mb-3 text-xs uppercase text-gray-400">serviços</h2>
+        <h2 className="mb-3 text-xs font-semibold uppercase text-gray-400">
+          serviços
+        </h2>
         <div className="flex flex-col gap-3">
           {barberbyid.map((service) => (
             <BarberShopService key={service.id_service} service={service} />
+          ))}
+        </div>
+      </div>
+      <Separator />
+      <div className="p-5">
+        <h2 className="mb-3 text-xs font-semibold uppercase text-gray-400">
+          contato
+        </h2>
+        <div className="flex flex-col gap-3">
+          {barberbyid[0].phones.map((phone) => (
+            <BarberShopPhone key={phone} phone={phone} />
           ))}
         </div>
       </div>

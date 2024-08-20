@@ -10,4 +10,5 @@ export type BarberByIDProps = {
   service_image_url: string
   price: number
   id_service: string
+  phones: string[]
 }
