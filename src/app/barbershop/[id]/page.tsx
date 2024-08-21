@@ -4,7 +4,7 @@ import { ChevronLeft, Menu, MapPinIcon, StarIcon } from "lucide-react"
 import { Button } from "@/app/_components/ui/button"
 import Link from "next/link"
 import { Separator } from "@/app/_components/ui/separator"
-import { BarberByIDProps } from "@/app/_constants/interfaces"
+import { BarberByIDProps } from "@/app/_constants/types"
 import BarberShopService from "@/app/_components/barbershop-service"
 import BarberShopPhone from "@/app/_components/barbershop-phone"
 
@@ -15,7 +15,7 @@ interface BarberShopProps {
 }
 
 const BarberShop = async ({ params }: BarberShopProps) => {
-  const barberbyid: Array<BarberByIDProps> = await getbarberbyid(params.id)
+  const barberbyid: BarberByIDProps[] = await getbarberbyid(params.id)
 
   return (
     <div>

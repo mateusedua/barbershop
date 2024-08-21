@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { BarberByIDProps } from "../_constants/interfaces"
+import { BarberByIDProps } from "../_constants/types"
 import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
 
