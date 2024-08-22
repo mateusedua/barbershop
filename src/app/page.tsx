@@ -46,7 +46,7 @@ const Home = async () => {
               className="gap-2"
               asChild
             >
-              <Link href="#">
+              <Link href={`/barbershop?service=${option.title}`}>
                 <Image
                   src={option.imageUrl}
                   alt={option.title}
