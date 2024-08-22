@@ -13,6 +13,17 @@ import { DialogContent, DialogTrigger } from "./ui/dialog"
 import SignInDialog from "./sign-in-dialog"
 import { Avatar, AvatarImage } from "./ui/avatar"
 import { signOut } from "next-auth/react"
+import {
+  AlertDialog,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog"
+import { AlertDialogAction } from "@radix-ui/react-alert-dialog"
 
 const SidebarSheet = () => {
   const { data } = useSession()
@@ -20,7 +31,7 @@ const SidebarSheet = () => {
   const handleClickLogout = () => signOut()
 
   return (
-    <SheetContent>
+    <SheetContent className="overflow-y-auto">
       <SheetHeader>
         <SheetTitle className="text-left">Menu</SheetTitle>
       </SheetHeader>
@@ -71,7 +82,7 @@ const SidebarSheet = () => {
             className="w-full justify-start gap-2"
             asChild
           >
-            <Link href="#">
+            <Link href={`/barbershop?service=${option.title}`}>
               <Image
                 src={option.imageUrl}
                 alt={option.title}
@@ -87,14 +98,36 @@ const SidebarSheet = () => {
         <>
           <Separator />
           <div className="py-5">
-            <Button
-              className="w-full justify-start gap-2"
-              variant="ghost"
-              onClick={handleClickLogout}
-            >
-              <LogOut />
-              Sair da Conta
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button className="w-full justify-start gap-2" variant="ghost">
+                  <LogOut />
+                  Sair da Conta
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent className="w-[90%] rounded-md">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Sair</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Deseja mesmo sair da plataforma?
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter className="flex flex-row items-center gap-3">
+                  <AlertDialogCancel asChild className="mt-0">
+                    <Button className="w-full">Cancelar</Button>
+                  </AlertDialogCancel>
+                  <AlertDialogAction asChild>
+                    <Button
+                      onClick={handleClickLogout}
+                      className="w-full"
+                      variant="destructive"
+                    >
+                      Sair
+                    </Button>
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </>
       )}

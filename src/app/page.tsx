@@ -1,7 +1,7 @@
 import Search from "./_components/search"
 import Image from "next/image"
-import { getrecomendedbarber } from "./_data/get-recomended-barber"
 import { getpopularbarber } from "./_data/get-popular-barber"
+import { getrecomendedbarber } from "./_data/get-recomended-barber"
 import BarberShopItem from "./_components/barbershop-item"
 import { BarberShopProps } from "./_constants/types"
 import Header from "./_components/header"

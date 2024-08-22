@@ -7,6 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form"
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
 import { SearchIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 const formSchema = z.object({
   search: z.string().min(1, {
@@ -22,8 +23,10 @@ const Search = () => {
     },
   })
 
+  const router = useRouter()
+
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+    router.push(`/barbershop?title=${values.search}`)
   }
 
   return (
